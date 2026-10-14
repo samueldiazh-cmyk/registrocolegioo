@@ -56,4 +56,16 @@ public String registrarEstudiante(String nombre, String direccion, String telefo
             return "Error: revise la fecha (formato dd/mm/aaaa).";
         }
     }
+public String reporteEstudiantes() {
+        ArrayList<Estudiante> lista = colegio.getEstudiantes();
+        if (lista.isEmpty()) {
+            return "No hay estudiantes registrados.";
+        }
+        String texto = "===== LISTA DE ESTUDIANTES =====\n\n";
+        for (int i = 0; i < lista.size(); i++) {
+            texto += (i + 1) + ". " + lista.get(i).mostrarInfo() + "\n";
+        }
+        texto += "\nTotal estudiantes: " + lista.size();
+        return texto;
+    }
 }
