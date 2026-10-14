@@ -44,6 +44,19 @@ public String getTelefono() {
     public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
+ public int calcularEdad() {
+        String[] partes = fechaNacimiento.split("/");
+        int dia = Integer.parseInt(partes[0]);
+        int mes = Integer.parseInt(partes[1]);
+        int anio = Integer.parseInt(partes[2]);
 
+        LocalDate hoy = LocalDate.now();
+        int edad = hoy.getYear() - anio;
+        if (hoy.getMonthValue() < mes
+                || (hoy.getMonthValue() == mes && hoy.getDayOfMonth() < dia)) {
+            edad--;
+        }
+        return edad;
+    }
     
     }
