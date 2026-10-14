@@ -68,4 +68,34 @@ public String reporteEstudiantes() {
         texto += "\nTotal estudiantes: " + lista.size();
         return texto;
     }
+public String reporteProfesoresPorSalario() {
+        ArrayList<Profesor> lista = new ArrayList<>(colegio.getProfesores());
+        if (lista.isEmpty()) {
+            return "No hay profesores registrados.";
+        }
+
+       
+        for (int i = 0; i < lista.size() - 1; i++) {
+            for (int j = 0; j < lista.size() - 1 - i; j++) {
+                if (lista.get(j).calcularPago() < lista.get(j + 1).calcularPago()) {
+                    Profesor temp = lista.get(j);
+                    lista.set(j, lista.get(j + 1));
+                    lista.set(j + 1, temp);
+                }
+            }
+        }
+
+        String texto = "===== PROFESORES POR SALARIO (MAYOR A MENOR) =====\n\n";
+        double totalPagos = 0;
+        double totalPrestaciones = 0;
+        for (int i = 0; i < lista.size(); i++) {
+            Profesor p = lista.get(i);
+            texto += (i + 1) + ". " + p.mostrarInfo() + "\n";
+            totalPagos += p.calcularPago();
+            totalPrestaciones += p.calcularPrestaciones();
+        }
+        texto += "\nTotal pagado a profesores: $" + String.format("%,.2f", totalPagos);
+        texto += "\nTotal prestaciones sociales: $" + String.format("%,.2f", totalPrestaciones);
+        return texto;
+    }
 }
