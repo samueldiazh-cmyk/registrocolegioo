@@ -32,4 +32,11 @@ public class Estudiante extends Persona {
     public void setAcudiente(String acudiente) {
         this.acudiente = acudiente;
     }
+        @Override
+    public String mostrarInfo() {
+        return super.mostrarInfo()
+                + " | Código: " + codigo
+                + " | Grado: " + grado
+                + " | Acudiente: " + acudiente;
+    }
 }
