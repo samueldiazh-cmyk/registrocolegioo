@@ -4,11 +4,18 @@
  */
 package com.mycompany.registrocolegioo.modelo.controlador.vista;
 
-/**
- *
- * @author cdval
- */
+import com.mycompany.registrocolegioo.controlador.ControladorColegio;
+import javax.swing.JOptionPane;
 public class VentanaPrincipal extends javax.swing.JFrame {
+      private ControladorColegio controlador = new ControladorColegio();
+
+    public ControladorColegio getControlador() {
+        return controlador;
+    }
+
+    public void setControlador(ControladorColegio controlador) {
+        this.controlador = controlador;
+    }
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName());
 
@@ -51,6 +58,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         txtTelefonoP.addActionListener(this::txtTelefonoPActionPerformed);
 
         btnGuardarProfesor.setText("guardar");
+        btnGuardarProfesor.addActionListener(this::btnGuardarProfesorActionPerformed);
 
         jLabel1.setText("jLabel1");
 
@@ -159,6 +167,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void txtTelefonoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoPActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefonoPActionPerformed
+
+    private void btnGuardarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProfesorActionPerformed
+        String msg = controlador.registrarProfesor(
+                txtNombreP.getText(), txtDireccionP.getText(), txtTelefonoP.getText(),
+                txtFechaP.getText(), txtCedula.getText(), txtArea.getText(),
+                txtSalarioHora.getText(), txtHoras.getText());
+        JOptionPane.showMessageDialog(this, msg);
+    }//GEN-LAST:event_btnGuardarProfesorActionPerformed
 
     /**
      * @param args the command line arguments

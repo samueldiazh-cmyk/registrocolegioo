@@ -53,6 +53,7 @@ public class Estudiante extends javax.swing.JFrame {
         jScrollPane1.setViewportView(txtReporte);
 
         btnGuardarEstudiante.setText("guardar");
+        btnGuardarEstudiante.addActionListener(this::btnGuardarEstudianteActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,6 +107,14 @@ public class Estudiante extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEstudianteActionPerformed
+          String msg = controlador.registrarEstudiante(
+                txtNombreE.getText(), txtDireccionE.getText(), txtTelefonoE.getText(),
+                txtFechaE.getText(), txtCodigo.getText(), txtGrado.getText(),
+                txtAcudiente.getText());
+        JOptionPane.showMessageDialog(this, msg);
+    }//GEN-LAST:event_btnGuardarEstudianteActionPerformed
 
     /**
      * @param args the command line arguments
