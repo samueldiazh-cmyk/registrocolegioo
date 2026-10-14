@@ -58,5 +58,10 @@ public String getTelefono() {
         }
         return edad;
     }
-    
+     public String mostrarInfo() {
+        return "Nombre: " + nombre
+                + " | Dirección: " + direccion
+                + " | Teléfono: " + telefono
+                + " | Fecha nac.: " + fechaNacimiento;
+    }
     }
