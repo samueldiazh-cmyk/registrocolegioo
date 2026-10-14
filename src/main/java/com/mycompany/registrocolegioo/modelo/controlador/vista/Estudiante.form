@@ -23,25 +23,33 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
-              <Component id="btnGuardarEstudiante" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="146" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="txtAcudiente" min="-2" pref="71" max="-2" attributes="0"/>
-                  <Component id="txtGrado" min="-2" pref="71" max="-2" attributes="0"/>
-                  <Component id="txtCodigo" min="-2" pref="71" max="-2" attributes="0"/>
-                  <Component id="txtFechaE" min="-2" pref="71" max="-2" attributes="0"/>
-                  <Component id="txtTelefonoE" min="-2" pref="71" max="-2" attributes="0"/>
-                  <Component id="txtDireccionE" min="-2" pref="71" max="-2" attributes="0"/>
-                  <Component id="txtNombreE" min="-2" pref="71" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="btnReporteEstudiantes" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Component id="btnGuardarEstudiante" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="146" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="txtAcudiente" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="txtGrado" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="txtCodigo" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="txtFechaE" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="txtTelefonoE" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="txtDireccionE" min="-2" pref="71" max="-2" attributes="0"/>
+                          <Component id="txtNombreE" min="-2" pref="71" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="154" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -56,7 +64,9 @@
               <Component id="txtTelefonoE" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="txtFechaE" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Component id="btnReporteEstudiantes" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="txtCodigo" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
@@ -73,7 +83,7 @@
               <Component id="txtAcudiente" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="142" max="32767" attributes="0"/>
+              <EmptySpace pref="136" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -114,6 +124,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarEstudianteActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnReporteEstudiantes">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="reporte"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnReporteEstudiantesActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

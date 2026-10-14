@@ -52,6 +52,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        btnReporteProfesores = new javax.swing.JButton();
+        txtReporte = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +78,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel8.setText("jLabel8");
 
+        btnReporteProfesores.setText("reporte");
+        btnReporteProfesores.addActionListener(this::btnReporteProfesoresActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -83,7 +88,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(128, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnGuardarProfesor)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnReporteProfesores)
+                        .addGap(58, 58, 58)
+                        .addComponent(btnGuardarProfesor))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,7 +127,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(124, 124, 124)
                                     .addComponent(txtNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGap(163, 163, 163))
+                .addGap(36, 36, 36)
+                .addComponent(txtReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -127,7 +137,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(txtReporte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDireccionP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,7 +168,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
                 .addGap(43, 43, 43)
-                .addComponent(btnGuardarProfesor)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnGuardarProfesor)
+                    .addComponent(btnReporteProfesores))
                 .addContainerGap(114, Short.MAX_VALUE))
         );
 
@@ -175,6 +188,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 txtSalarioHora.getText(), txtHoras.getText());
         JOptionPane.showMessageDialog(this, msg);
     }//GEN-LAST:event_btnGuardarProfesorActionPerformed
+
+    private void btnReporteProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteProfesoresActionPerformed
+         txtReporte.setText(controlador.reporteProfesoresPorSalario());
+    }//GEN-LAST:event_btnReporteProfesoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,6 +220,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardarProfesor;
+    private javax.swing.JButton btnReporteProfesores;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -217,6 +235,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField txtFechaP;
     private javax.swing.JTextField txtHoras;
     private javax.swing.JTextField txtNombreP;
+    private javax.swing.JTextField txtReporte;
     private javax.swing.JTextField txtSalarioHora;
     private javax.swing.JTextField txtTelefonoP;
     // End of variables declaration//GEN-END:variables
