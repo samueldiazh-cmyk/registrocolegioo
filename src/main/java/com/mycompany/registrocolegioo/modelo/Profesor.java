@@ -65,4 +65,18 @@ public class Profesor extends Persona {
     public double calcularPago(double bonificacion) {
         return calcularPago() + bonificacion;
     }
+        
+    public double calcularPrestaciones() {
+        return calcularPago() * PORC_PRESTACIONES;
+    }
+
+    
+    @Override
+    public String mostrarInfo() {
+        return super.mostrarInfo()
+                + " | Cédula: " + cedula
+                + " | Área: " + area
+                + " | Pago: $" + String.format("%,.2f", calcularPago())
+                + " | Prestaciones: $" + String.format("%,.2f", calcularPrestaciones());
+    }
 }
