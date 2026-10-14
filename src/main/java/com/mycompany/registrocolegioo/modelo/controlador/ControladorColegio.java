@@ -38,4 +38,22 @@ public String registrarProfesor(String nombre, String direccion, String telefono
             return "Error: revise la fecha (formato dd/mm/aaaa).";
         }
     }
+public String registrarEstudiante(String nombre, String direccion, String telefono,
+            String fechaNac, String codigo, String grado, String acudiente) {
+        try {
+            Estudiante e = new Estudiante();
+            e.setNombre(nombre);
+            e.setDireccion(direccion);
+            e.setTelefono(telefono);
+            e.setFechaNacimiento(fechaNac);
+            e.setCodigo(codigo);
+            e.setGrado(grado);
+            e.setAcudiente(acudiente);
+            e.calcularEdad(); // valida la fecha
+            colegio.agregarEstudiante(e);
+            return "Estudiante registrado correctamente.";
+        } catch (Exception ex) {
+            return "Error: revise la fecha (formato dd/mm/aaaa).";
+        }
+    }
 }
