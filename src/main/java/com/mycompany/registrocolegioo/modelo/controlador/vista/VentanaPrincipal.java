@@ -178,21 +178,49 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtTelefonoPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefonoPActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_txtTelefonoPActionPerformed
 
     private void btnGuardarProfesorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarProfesorActionPerformed
+                String[] tipos = {"Planta", "Catedra"};
+        int opcion = JOptionPane.showOptionDialog(this, "¿Qué tipo de profesor es?", "Tipo de profesor",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, tipos, tipos[0]);
+        if (opcion < 0) {
+            return; 
+        }
+        String tipo = tipos[opcion];
+        String pregunta = tipo.equals("Planta") ? "Años de antigüedad:" : "Auxilio de transporte:";
+        String extra = JOptionPane.showInputDialog(this, pregunta);
+        if (extra == null) {
+            return; 
+        }
         String msg = controlador.registrarProfesor(
                 txtNombreP.getText(), txtDireccionP.getText(), txtTelefonoP.getText(),
                 txtFechaP.getText(), txtCedula.getText(), txtArea.getText(),
-                txtSalarioHora.getText(), txtHoras.getText());
+                txtSalarioHora.getText(), txtHoras.getText(), tipo, extra);
         JOptionPane.showMessageDialog(this, msg);
     }//GEN-LAST:event_btnGuardarProfesorActionPerformed
 
     private void btnReporteProfesoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteProfesoresActionPerformed
-         txtReporte.setText(controlador.reporteProfesoresPorSalario());
+       String reporte = controlador.reporteProfesoresPorSalario();
+        txtReporte.setText(reporte);
+        mostrarEImprimir(reporte);
+    
     }//GEN-LAST:event_btnReporteProfesoresActionPerformed
-
+ private void mostrarEImprimir(String reporte) {
+        javax.swing.JTextArea area = new javax.swing.JTextArea(reporte, 20, 70);
+        area.setEditable(false);
+        Object[] botones = {"Imprimir", "Cerrar"};
+        int opcion = JOptionPane.showOptionDialog(this, new javax.swing.JScrollPane(area), "Reporte",
+                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, botones, botones[1]);
+        if (opcion == 0) {
+            try {
+                area.print();
+            } catch (java.awt.print.PrinterException ex) {
+                JOptionPane.showMessageDialog(this, "No se pudo imprimir: " + ex.getMessage());
+            }
+        }
+    }
     /**
      * @param args the command line arguments
      */

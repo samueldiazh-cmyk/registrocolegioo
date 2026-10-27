@@ -1,17 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.registrocolegioo.controlador;
 
 import com.mycompany.registrocolegioo.modelo.Colegio;
 import com.mycompany.registrocolegioo.modelo.Estudiante;
 import com.mycompany.registrocolegioo.modelo.Profesor;
+import com.mycompany.registrocolegioo.modelo.ProfesorCatedra;
+import com.mycompany.registrocolegioo.modelo.ProfesorPlanta;
 import java.util.ArrayList;
 
 public class ControladorColegio {
 
-    private Colegio colegio = new Colegio();
+    
+    private static Colegio colegioCompartido = new Colegio();
+
+    private Colegio colegio;
+
+  
+    public ControladorColegio() {
+        this(colegioCompartido);
+    }
+
+   
+    public ControladorColegio(Colegio colegio) {
+        this.colegio = colegio;
+    }
 
     public Colegio getColegio() {
         return colegio;
@@ -20,25 +31,39 @@ public class ControladorColegio {
     public void setColegio(Colegio colegio) {
         this.colegio = colegio;
     }
-public String registrarProfesor(String nombre, String direccion, String telefono,
-            String fechaNac, String cedula, String area, String salarioHora, String horas) {
+
+    
+    public String registrarProfesor(String nombre, String direccion, String telefono,
+            String fechaNac, String cedula, String area, String salarioHora, String horas,
+            String tipo, String extra) {
         try {
             double salario = Double.parseDouble(salarioHora);
             int numHoras = Integer.parseInt(horas);
-            Profesor p = new Profesor(nombre, direccion, telefono, fechaNac,
-                    cedula, area, salario, numHoras);
+            Profesor p;
+            if ("Planta".equalsIgnoreCase(tipo)) {
+                int anios = Integer.parseInt(extra);
+                p = new ProfesorPlanta(nombre, direccion, telefono, fechaNac,
+                        cedula, area, salario, numHoras, anios);
+            } else if ("Catedra".equalsIgnoreCase(tipo) || "Cátedra".equalsIgnoreCase(tipo)) {
+                double auxilio = Double.parseDouble(extra);
+                p = new ProfesorCatedra(nombre, direccion, telefono, fechaNac,
+                        cedula, area, salario, numHoras, auxilio);
+            } else {
+                return "Error: el tipo de profesor debe ser Planta o Cátedra.";
+            }
             if (p.calcularEdad() < 18) {
                 return "Error: el profesor debe ser mayor de edad.";
             }
             colegio.agregarProfesor(p);
             return "Profesor registrado correctamente.";
         } catch (NumberFormatException e) {
-            return "Error: salario y horas deben ser números.";
+            return "Error: salario, horas, antigüedad y auxilio deben ser números.";
         } catch (Exception e) {
             return "Error: revise la fecha (formato dd/mm/aaaa).";
         }
     }
-public String registrarEstudiante(String nombre, String direccion, String telefono,
+
+    public String registrarEstudiante(String nombre, String direccion, String telefono,
             String fechaNac, String codigo, String grado, String acudiente) {
         try {
             Estudiante e = new Estudiante();
@@ -56,7 +81,8 @@ public String registrarEstudiante(String nombre, String direccion, String telefo
             return "Error: revise la fecha (formato dd/mm/aaaa).";
         }
     }
-public String reporteEstudiantes() {
+
+    public String reporteEstudiantes() {
         ArrayList<Estudiante> lista = colegio.getEstudiantes();
         if (lista.isEmpty()) {
             return "No hay estudiantes registrados.";
@@ -68,13 +94,14 @@ public String reporteEstudiantes() {
         texto += "\nTotal estudiantes: " + lista.size();
         return texto;
     }
-public String reporteProfesoresPorSalario() {
+
+    public String reporteProfesoresPorSalario() {
         ArrayList<Profesor> lista = new ArrayList<>(colegio.getProfesores());
         if (lista.isEmpty()) {
             return "No hay profesores registrados.";
         }
 
-       
+        // Ordenamiento burbuja de mayor a menor pago
         for (int i = 0; i < lista.size() - 1; i++) {
             for (int j = 0; j < lista.size() - 1 - i; j++) {
                 if (lista.get(j).calcularPago() < lista.get(j + 1).calcularPago()) {
