@@ -128,7 +128,16 @@ public class Estudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarEstudianteActionPerformed
 
     private void btnReporteEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteEstudiantesActionPerformed
-        txtReporte.setText(controlador.reporteEstudiantes());
+         txtReporte.setText(controlador.reporteEstudiantes());
+        int opcion = JOptionPane.showConfirmDialog(this, "¿Desea imprimir el reporte?",
+                "Imprimir", JOptionPane.YES_NO_OPTION);
+        if (opcion == JOptionPane.YES_OPTION) {
+            try {
+                txtReporte.print();
+            } catch (java.awt.print.PrinterException ex) {
+                JOptionPane.showMessageDialog(this, "No se pudo imprimir: " + ex.getMessage());
+            }
+        }
     }//GEN-LAST:event_btnReporteEstudiantesActionPerformed
 
     /**
